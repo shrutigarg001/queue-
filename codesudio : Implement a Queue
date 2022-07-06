@@ -1,0 +1,64 @@
+class Queue {
+public: 
+    int *arr; 
+    int size; 
+    int f; 
+    int rear; 
+    
+    Queue() { 
+        size = 10001; 
+        arr = new int[size]; 
+        f = 0; 
+        rear = 0; 
+        this -> size = size; 
+        // Implement the Constructor
+    }
+
+    /*----------------- Public Functions of Queue -----------------*/
+
+    bool isEmpty() { 
+        if(f == rear) {
+            return true; 
+        }
+        return false; 
+        // Implement the isEmpty() function
+    }
+
+    void enqueue(int data) { 
+        if(rear == size -1) {
+            return; 
+        } 
+        
+        arr[rear] = data; 
+        rear++; 
+        // Implement the enqueue() function
+    }
+
+    int dequeue() { 
+        if(f == rear) {
+            return -1; 
+        } 
+        
+        int val; 
+        val = arr[f]; 
+        f++; 
+        
+        if(f == rear) {
+            f = 0; 
+            rear = 0; 
+        } 
+        
+        return val; 
+        // Implement the dequeue() function
+    }
+
+    int front() { 
+        if(f == rear)
+        return -1; 
+        else 
+        {
+            return arr[f]; 
+        }
+        // Implement the front() function
+    }
+}; 
