@@ -1,0 +1,59 @@
+class CircularQueue{
+    public: 
+    int *arr; 
+    int front; 
+    int rear; 
+    int size; 
+    // Initialize your data structure.
+    CircularQueue(int n){ 
+        arr = new int[n]; 
+        front = -1; 
+        rear = -1; 
+        this -> size = n; 
+        // Write your code here.
+    }
+
+    // Enqueues 'X' into the queue. Returns true if it gets pushed into the stack, and false otherwise.
+    bool enqueue(int value){ 
+        // overflow condition 
+        if((front == 0 && rear == size-1) || (rear == (front -1)%(size-1))) {
+            return false; 
+        } 
+        else if(front == -1) {
+            front = 0; 
+            rear = 0; 
+            arr[rear] = value; 
+        }
+        else if(front != 0 && rear == size -1) {
+            rear = 0; 
+        } 
+        else { 
+            rear++; 
+        } 
+        arr[rear] = value;
+        return true; 
+            // Write your code here.
+    }
+
+    // Dequeues top element from queue. Returns -1 if the stack is empty, otherwise returns the popped element.
+    int dequeue(){ 
+        int val; 
+        if(front == -1) {
+            return -1; 
+        } 
+         val = arr[front]; 
+        if(front == size -1) {
+            front = 0; 
+        } 
+        else if(front == rear)
+        {
+            front = -1; 
+            rear = -1; 
+        } 
+        else
+        front++; 
+        
+        return val; 
+        // Write your code here.
+    }
+}; 
